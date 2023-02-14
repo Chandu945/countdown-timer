@@ -1,8 +1,8 @@
-import CountdownTimer from "./component/count-timer";
+import Timer from "./component/count-timer";
 function App() {
  return(
   <>
-  <CountdownTimer/>
+  <Timer/>
   </>
  )
 }

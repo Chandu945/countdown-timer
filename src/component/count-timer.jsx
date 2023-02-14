@@ -1,36 +1,41 @@
 import { useState } from "react";
-import './count-timer.css';
-function CountdownTimer() {
-  const [count, setcount] = useState("");
-  const [flag,setflag] = useState(true);
-  function keyhandler(event) {
-    if (event.key === "Enter") {
-      let value = Math.floor(parseInt(event.target.value));
-      if (value > 0 && flag) {
-        setflag(false);
-        let interval = setInterval(() => {
-          setcount(value--);
-          if (value < 0) {
-            clearInterval(interval);
-            setflag(true);
-            event.target.value = "";
-          }
-        }, 1000)
-      }else if (value <0 && flag){
-        setcount(0);
+import './timer.css';
+function Timer() {
+  const [time, setime] = useState("")
+  const [interval , updateinterval] = useState(null)
+  function handle(e) {
+    let value = parseInt(e)
+    console.log(value)
+    if (value > 0) {
+      if(interval !== null){
+        clearInterval(interval)
+        updateinterval(null)
       }
+     let newinterval =  setInterval(() => {
+        if (value > 0) {
+          setime(value)
+          value--
+        } else {
+          setime(0)
+        }
+      }, 1000
+      )
+      updateinterval(newinterval)
+    } else {
+      setime(0)
     }
+
   }
-return (<div id="container">
-  <h1>CountDown Timer</h1>
-  <input type="number" onKeyDown={keyhandler} id="timeCount" placeholder="Enter time And Click Enter"/>
-  <div id="current-time">
-    {
-      count
-    }
+  return (<div id="main">
+    <h1>CountDown</h1>
+    <input type="number" id="timeCount" placeholder="Enter time" onKeyUp={(e)=>{handle(e.target.value)}} />
+    <div id="current-time">
+      {
+        time
+      }
+    </div>
   </div>
-</div>
-)
+  )
 }
 
-export default CountdownTimer;
+export default Timer;

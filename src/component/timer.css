@@ -1,0 +1,33 @@
+#main{
+    margin-left: 530px;
+    margin-top: 150px;
+    border: 5px solid black;
+    width: fit-content;
+    padding: 30px 50px;
+    background-color: aqua;
+}
+
+#timeCount{
+    height: 25px;
+    width: 200px;
+    margin-left: 10px;
+}
+h1{
+    margin: 0;
+    margin-left: 25px;
+    margin-bottom: 30px;
+}
+
+#current-time{
+    border: 2px solid black;
+    height: 40px;
+    width: 150px;
+    margin-top: 25px;
+    margin-left: 40px;
+    text-align: center;
+    font-size: 25px;
+}
+
+body{
+    background-color: gray;
+}
